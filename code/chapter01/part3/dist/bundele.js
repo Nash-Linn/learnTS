@@ -1,0 +1,1 @@
+!function(){"use strict";console.log(579);var e=document.createElement("div"),o={name:"孙悟空",age:33};console.log(o),o.age=18,console.log(o),e.innerHTML="哈哈哈哈",document.body.appendChild(e),console.log("你好")}();
