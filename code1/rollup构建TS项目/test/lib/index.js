@@ -1,0 +1,2 @@
+!function(e,l){e&&!e.getElementById("livereloadscript")&&((l=e.createElement("script")).async=1,l.src="//"+(self.location.host||"localhost").split(":")[0]+":35729/livereload.js?snipver=1",l.id="livereloadscript",e.getElementsByTagName("head")[0].appendChild(l))}(self.document),function(e){"function"==typeof define&&define.amd?define(e):e()}((function(){"use strict";console.log("hello world");console.log(123),console.log("开发")}));
+//# sourceMappingURL=index.js.map
