@@ -1,52 +1,57 @@
 (()=>{
- // Partial 所有属性可选的意思
- // Required 属性必选的意思
- // Pick   选取部分属性
- // Exclude  排除某些属性  处理联合类型
- // Omit 排除部分属性 并且返回新的类型
+
+  //1.Record 
+  //2.ReturnType
 
 
- interface User{
-  address:string
-  age:number
-  name:string
- }
+  //1.Record
+  //约束对象的key和value的类型
+  //所以接收两个泛型
 
- //实现 partial
- type CoustomPartial<T> = {
-    [P in keyof T]?:T[P]
- }
+  type ObjKey = keyof any
 
- type PartialUser = Partial<User>
-
-
- type CoustomRequired<T> = {
-  [P in keyof T]-?:T[P]
-}
- type RequiredUser = Required<PartialUser>
-
-
-  type CoustomPick<T,K extends keyof T> = {
-    [P in K]:T[P]
+  type CustomRecord<K extends ObjKey,T>={
+    [P in K]:T
   }
 
-  type PickUser = Pick<User,'name' | 'age'>
+  type Key = 'c'|'x'| 'k'  //key不能少
 
+  type Value ='唱歌'|'跳舞'|'rap' //value随便
 
-  type CoustomExclude<T,K> = T extends K ? never : T
-  // 为什么是 never
-  type test2 = 'a' | 'b' | never
-
-  // type test2 = 'a' | 'b'
-  // 在联合类型中 never 会被排除
-
-
-  // 排除name
-  type ExcludeUser = Exclude<'name' | 'age','name'>
+  let obj:Record<Key,Value> = {
+    c:'唱歌',
+    x:'跳舞',
+    k:'rap'
+  }
 
   
-  type CoustomOmit<T,K extends keyof T> = Pick<T,Exclude<keyof T,K>>
-  type OmitUser = Omit<User,'name'>
+  // 可以进行嵌套
+  let obj1:Record<Key,Record<Key,Value>> = {
+    c:{
+      c:'唱歌',
+      x:'跳舞',
+      k:'rap'
+    },
+    x:{
+      c:'唱歌',
+      x:'跳舞',
+      k:'rap'
+    },
+    k:{
+      c:'唱歌',
+      x:'跳舞',
+      k:'rap'
+    },
+  }
 
+
+  //2.ReturnType
+  //获取函数返回值的类型
+
+  type CustomReturnType<F extends Function > = F extends (...args:any[]) => infer Res ? Res : never
+
+  const fn = ()=>[1,2,3,'asd',false]
+
+  type arrNum = ReturnType<typeof fn> 
 
 })()

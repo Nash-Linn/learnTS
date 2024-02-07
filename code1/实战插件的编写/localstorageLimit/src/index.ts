@@ -5,7 +5,7 @@ import { Dictionaries  } from "./enum";
 export class Storage implements StorageCls{
   set<T>(key:Key,value:T,expire:Expire=Dictionaries.permanent):void{
     const data = {
-      value, //用户的value
+      value, //要保存的value
       [Dictionaries.expire]:expire //过期时间
     }
     localStorage.setItem(key,JSON.stringify(data))
