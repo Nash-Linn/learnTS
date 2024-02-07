@@ -16,3 +16,11 @@
 # 安装声明文件
 
 `npm i @types/node -D`
+
+# 初始化 tsconfig.json
+
+`tsc --init`
+
+# 编译
+
+`tsc -w`

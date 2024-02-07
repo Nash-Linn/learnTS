@@ -1,4 +1,4 @@
-
+(()=>{
 //主类型
 interface A{
   name:string
@@ -46,3 +46,4 @@ fnb = fna
 //双向协变
 fnb = fna
 fna = fnb
+})
